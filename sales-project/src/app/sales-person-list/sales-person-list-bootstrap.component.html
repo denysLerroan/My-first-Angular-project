@@ -17,9 +17,11 @@
             <td>{{ tempSalesPerson.firstName }}</td>
             <td>{{ tempSalesPerson.lastName }}</td>
             <td>{{ tempSalesPerson.email }}</td>
-            <td>{{ tempSalesPerson.salesVolume | currency:'USD'}}</td>
+            <td [ngClass]="{'success': tempSalesPerson.salesVolume >= 60000,
+                'fail': tempSalesPerson.salesVolume <= 59999}">{{ tempSalesPerson.salesVolume | currency:'USD'}}</td>
 
-            <td>
+            <td [ngClass]="{'success': tempSalesPerson.salesVolume >= 60000,
+                'fail': tempSalesPerson.salesVolume <= 59999}">
                 <div *ngIf="tempSalesPerson.salesVolume >= 60000; else myElseBlock">Yes</div>
                 <ng-template #myElseBlock>No</ng-template>
             </td>
